@@ -1,11 +1,9 @@
-package fr.cda.bookstore.controller;
+package fr.cda.bookstore.simple.controller;
 
-import fr.cda.bookstore.metier.Book;
-import fr.cda.bookstore.service.BookService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import fr.cda.bookstore.sql.entity.BookEntity;
+import fr.cda.bookstore.simple.metier.Book;
+import fr.cda.bookstore.simple.service.BookService;
+import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceNotFoundException;
 import java.util.List;

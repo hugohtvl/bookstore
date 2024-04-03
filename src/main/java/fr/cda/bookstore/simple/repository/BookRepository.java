@@ -1,11 +1,12 @@
-package fr.cda.bookstore.repository;
+package fr.cda.bookstore.simple.repository;
 
-import fr.cda.bookstore.metier.Book;
+import fr.cda.bookstore.simple.metier.Book;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// Annotation @Repository -> Définir une classe contenant des accès aux données
 @Repository
 public class BookRepository {
     private List<Book> books;

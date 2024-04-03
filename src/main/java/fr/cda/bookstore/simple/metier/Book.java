@@ -1,4 +1,4 @@
-package fr.cda.bookstore.metier;
+package fr.cda.bookstore.simple.metier;
 
 import java.util.Objects;
 
@@ -7,6 +7,10 @@ public class Book {
     private int nbPages;
 
     private String bookTitle;
+
+    public Book(int nbPages) {
+        this.nbPages = nbPages;
+    }
 
     public Book(int nbPages, String bookTitle) {
         this.nbPages = nbPages;
@@ -40,5 +44,10 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(nbPages, bookTitle);
+    }
+
+    @Override
+    public String toString() {
+        return bookTitle;
     }
 }

@@ -1,7 +1,7 @@
 package fr.cda.bookstore;
 
-import fr.cda.bookstore.metier.Book;
-import fr.cda.bookstore.metier.Library;
+import fr.cda.bookstore.simple.metier.Book;
+import fr.cda.bookstore.simple.metier.Library;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,5 +36,4 @@ class BookTest {
         library.addBook(book, 0);
         Assertions.assertFalse(library.isDispo(book));
     }
-
 }

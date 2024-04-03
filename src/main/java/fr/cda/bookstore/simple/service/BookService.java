@@ -1,8 +1,7 @@
-package fr.cda.bookstore.service;
+package fr.cda.bookstore.simple.service;
 
-import fr.cda.bookstore.metier.Book;
-import fr.cda.bookstore.repository.BookRepository;
-import fr.cda.bookstore.repository.LibraryRepository;
+import fr.cda.bookstore.simple.metier.Book;
+import fr.cda.bookstore.simple.repository.LibraryRepository;
 import org.springframework.stereotype.Service;
 
 import javax.management.InstanceNotFoundException;

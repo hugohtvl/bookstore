@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.management.InstanceNotFoundException;
 import java.time.LocalDateTime;
 
+// @RestControllerAdvice -> Joue le rôle d'intercepteur
 @RestControllerAdvice
 public class ExceptionController {
+    // @ExceptionHandler -> Définit les exceptions interceptées et traitées par la méthode qui vient juste en dessous
     @ExceptionHandler(InstanceNotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    // ResponseEntity -> Classe qui wrap notre body pour ajouter des informations sur le code status et les headers
     public ResponseEntity<ExceptionMessage> notFound(HttpServletRequest request, InstanceNotFoundException exception) {
         return new ResponseEntity<>(new ExceptionMessage(LocalDateTime.now(), request.getRequestURI(), "Instance not found"), HttpStatus.NOT_FOUND);
     }

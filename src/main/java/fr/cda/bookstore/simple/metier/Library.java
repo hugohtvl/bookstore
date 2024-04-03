@@ -1,4 +1,4 @@
-package fr.cda.bookstore.metier;
+package fr.cda.bookstore.simple.metier;
 
 import javax.management.InstanceNotFoundException;
 import java.util.HashMap;
@@ -55,7 +55,7 @@ public class Library {
         return Optional.ofNullable(this.bookInventory.get(b)).orElseThrow(InstanceNotFoundException::new);
     }
 
-    public List<Book> getAllBooksDispo(){
+    public List<Book> getAllBooksDispo() {
         return this.bookInventory.entrySet().stream().filter(book -> book.getValue() > 0).map(Map.Entry::getKey).toList();
     }
 }
