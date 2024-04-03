@@ -21,6 +21,15 @@ public class BookEntity {
     @Column(name="nb_pages")
     private Integer nbPages;
 
+    //TODO vérifier ici la source de données
+    @ManyToOne
+    @JoinColumn(name = "id", updatable = false, insertable = false)
+    private AutorEntity autor;
+
+    @Column(name = "autor_id")
+    private Integer autorId;
+
+
     public BookEntity() {
     }
 
