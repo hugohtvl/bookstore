@@ -1,7 +1,11 @@
 package fr.cda.bookstore.sql.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "autor")
 public class AutorEntity {
@@ -10,25 +14,15 @@ public class AutorEntity {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name="firstname")
+    private String firstname;
+
+    @Column(name="birth_date")
+    private String birthDate;
 
     public AutorEntity() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

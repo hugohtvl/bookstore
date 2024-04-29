@@ -1,7 +1,10 @@
 package fr.cda.bookstore.sql.controller;
 
+import fr.cda.bookstore.sql.DTO.BookWithAutorIdDTO;
 import fr.cda.bookstore.sql.entity.BookEntity;
 import fr.cda.bookstore.sql.service.BookSqlService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceNotFoundException;
@@ -35,5 +38,22 @@ public class BookSqlController {
     @GetMapping("/search")
     public BookEntity getBookByTitle(@RequestParam("titre") String titre) throws InstanceNotFoundException {
         return bookSqlService.getBookByTitle(titre);
+    }
+
+//    @GetMapping("/book/{autorId}")
+//    public List <BookEntity> getBooksByAutorId(@PathVariable("autorId") Integer autorId) throws InstanceNotFoundException {
+//        return bookSqlService.getByAutorId(autorId);
+//    }
+
+    @GetMapping("/byAutorId/{autorId}")
+    public ResponseEntity<List<BookWithAutorIdDTO>> getBooksByAutorId(@PathVariable Integer autorId) {
+        List<BookWithAutorIdDTO> dtos = bookSqlService.getBooksByAutorId(autorId);
+        return ResponseEntity.ok().body(dtos);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<BookWithAutorIdDTO> createBook(@RequestBody BookWithAutorIdDTO bookDTO) {
+        BookWithAutorIdDTO createdBook = bookSqlService.createBook(bookDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
     }
 }

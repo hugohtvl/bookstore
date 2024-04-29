@@ -1,7 +1,14 @@
 package fr.cda.bookstore.sql.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.Objects;
+import java.util.Set;
+
+@Getter
+@Setter
 // @Entity -> Classe lié à une table dans la BDD
 @Entity
 // @Table -> Nom de la table à lier à l'entité
@@ -18,42 +25,40 @@ public class BookEntity {
     @Column(name="title")
     private String title;
 
+    @Column(name="description")
+    private String description;
+
     @Column(name="nb_pages")
     private Integer nbPages;
 
-    //TODO vérifier ici la source de données
+    @Column(name="etat")
+    private String etat;
+
     @ManyToOne
-    @JoinColumn(name = "id", updatable = false, insertable = false)
+    @JoinColumn(name = "autor_id", updatable = false, insertable = false)
+    // On peut récupérer l'entité entière
     private AutorEntity autor;
 
+    // Ou uniquement le champ id
     @Column(name = "autor_id")
     private Integer autorId;
 
+    @ManyToMany(mappedBy = "likes") // Correspondant à la propriété 'likes' de LiteraryGenreEntity
+    Set<LiteraryGenreEntity> likedGenres;
 
     public BookEntity() {
     }
 
-    public Integer getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookEntity that = (BookEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(nbPages, that.nbPages) && Objects.equals(etat, that.etat) && Objects.equals(autor, that.autor) && Objects.equals(autorId, that.autorId) && Objects.equals(likedGenres, that.likedGenres);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getNbPages() {
-        return nbPages;
-    }
-
-    public void setNbPages(Integer nbPages) {
-        this.nbPages = nbPages;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, nbPages, etat, autor, autorId, likedGenres);
     }
 }

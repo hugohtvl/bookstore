@@ -1,7 +1,10 @@
 package fr.cda.bookstore.sql.repository;
 
+import fr.cda.bookstore.sql.DTO.BookWithAutorIdDTO;
 import fr.cda.bookstore.sql.entity.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -10,5 +13,5 @@ import java.util.List;
 public interface BookSqlRepository extends JpaRepository<BookEntity, Integer> {
     BookEntity findByTitleIgnoreCase(String title);
 
-    List<BookEntity> findByAuteurId(Integer auteurId);
+    List<BookEntity> findByAutorId(Integer autorId);
 }
